@@ -1,5 +1,5 @@
 # Groove
-Groove is a simple Music player that keeps record of your most favourite tracks and make your listening experience more fluent.
+Groove is a simple Music player that keeps record of your favourite tracks and make your listening experience more fluent.
 
 # Built by
 - Aranya Rayed
