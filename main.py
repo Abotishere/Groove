@@ -1,6 +1,6 @@
 from tkinter import *
 # import pygame as pg (pygame download hochena)
+# pydub use korchi
 import os
-import requests
 
 from playback import audio_Control

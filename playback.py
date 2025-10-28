@@ -1,9 +1,24 @@
+# pydub for loading/editing and a playback library like simpleaudio to actually hear the sound
+
+from pydub import AudioSegment
+from pydub.playback import play
+
+# Install a simple playback library
+# cmd: pip install simpleaudio (some error is occuring during installation)
+
 class audio_Control:
     def __init__(self):
+        self.current_song = None
+        self.songs = []
         pass
 
     def play_Audio(self):
-        pass
+        try:    
+            song = AudioSegment.from_mp3("./music_files/song1.mp3")
+            self.songs.append(str(song))
+            play(song)
+        except Exception as e:
+            print("Error: ", e)
 
     def pause_Audio(self):
         pass
