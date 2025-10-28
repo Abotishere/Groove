@@ -4,18 +4,36 @@ from pydub import AudioSegment
 from pydub.playback import play
 
 # Install a simple playback library
-# cmd: pip install simpleaudio (some error is occuring during installation)
+# cmd: pip install simpleaudio (installing C++ tools from Visual Studio)
+# must have simpleaudio installed for play to work
 
 class audio_Control:
-    def __init__(self):
-        self.current_song = None
-        self.songs = []
-        pass
+    """
+    Manages music playback using pydub for loading and simpleaudio
+    (via pydub.playback) for playing.
+    """
 
-    def play_Audio(self):
+    def __init__(self, playlist_paths: list):
+        # Args: playlist_paths (list): A list of string file paths to the audio files.
+
+        if not playlist_paths:
+            raise ValueError("Playlist cannot be empty.")
+
+        # --- State Management ---
+        self.playlist: list = list(playlist_paths) # A copy of the paths to work on
+        self.current_index: int = 0
+        self.volume_db: float = 0.0 # Volume in decibels
+
+        # --- Playback Objects ---
+        self.original_segment: AudioSegment | None = None # Raw loaded file
+        self.current_segment: AudioSegment | None = None  # Volume-adjusted file
+        self.playback_handle = None # The simpleaudio PlayObject
+        self.is_playing: bool = False
+        self.is_paused: bool = False
+
+    def play_Audio(self, file_name: str): # file_name = "./music_files/mySong1.mp3" is an example
         try:    
-            song = AudioSegment.from_mp3("./music_files/song1.mp3")
-            self.songs.append(str(song))
+            song = AudioSegment.from_mp3(file_name)
             play(song)
         except Exception as e:
             print("Error: ", e)
