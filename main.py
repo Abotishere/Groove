@@ -3,4 +3,4 @@ from tkinter import *
 # pydub use korchi
 import os
 
-from playback import audio_Control
+from AudioControl import audio_Control
