@@ -10,6 +10,7 @@
 
 # Import necessary Libraries
 1. PyDub:
+Run the following in command prompt or powershell
 ```
 pip install pydub
 ```
@@ -32,11 +33,13 @@ ffmpeg -version
 - If it's installed correctly, you will see a bunch of text starting with ffmpeg version ..., along with configuration details.
 
 3. simpleaudio:
+Run the following in command prompt or powershell
 ```
 pip install simpleaudio
 ```
 
 4. Tkinter:
+Run the following in command prompt or powershell
 ```
 pip install tkinter
 ```
